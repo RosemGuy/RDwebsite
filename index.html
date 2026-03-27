@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <title>RosemaryDude Website</title>
 
-<audio autoplay loop hidden volume="-100">
+<audio id="bg-music" autoplay loop hidden>
     <source src="https://dick.eversiege.pics/uploads/Ya%20Soshla%20S%20Uma%20(Very%20First%20Version).mp3" type="audio/mpeg">
 </audio>
-
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -21,7 +20,6 @@ body {
     text-shadow: 1px 1px 0 #000;
 }
 
-/* Карточка */
 .card {
     max-width: 600px;
     margin: 50px auto;
@@ -31,105 +29,193 @@ body {
     box-shadow: 0 0 15px hsl(288, 100%, 50%);
 }
 
-/* Заголовки */
-h1 {
-    color: #ff00ff;
-    font-size: 2em;
+.music-link {
+    display: block;
     text-align: center;
-    margin-bottom: 10px;
-}
-
-h2 {
-    color: #00ffff;
-    font-size: 1.5em;
-    border-bottom: 2px dashed hwb(251 35% 0%);
-    padding-bottom: 5px;
-    margin-top: 20px;
-}
-
-/* Ссылки */
-a {
+    margin: 15px 0;
+    padding: 12px;
+    border: 2px solid #ffff00;
+    background: rgba(255, 255, 0, 0.1);
     color: #ffff00;
-    text-decoration: underline;
-}
-a:hover {
-    color: #ff0000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: 0.3s;
 }
 
-/* Список */
-.row {
+.music-link:hover {
+    background: #ffff00;
+    color: #000;
+    box-shadow: 0 0 20px #ffff00;
+}
+
+h1 { color: #ff00ff; font-size: 2em; text-align: center; }
+h2 { color: #00ffff; font-size: 1.5em; border-bottom: 2px dashed #3700ff; padding-bottom: 5px; margin-top: 20px; }
+
+a { color: #ffff00; text-decoration: underline; }
+a:hover { color: #ff0000; }
+
+.row { display: flex; justify-content: space-between; margin: 8px 0; }
+.nick { color: hsl(258, 100%, 50%); font-weight: bold; text-decoration: underline; }
+
+/* Рекламное окно */
+#ad-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.ad-window {
+    width: 320px;
+    background: #c0c0c0;
+    border: 3px outset #fff;
+    color: #000;
+    text-shadow: none;
+    box-shadow: 10px 10px 0 rgba(0,0,0,0.5);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.ad-header {
+    background: linear-gradient(90deg, #000080, #0080ff);
+    color: white;
+    padding: 4px 6px;
     display: flex;
     justify-content: space-between;
-    margin: 8px 0;
-}
-
-/* Ник */
-.nick {
-    color: hsl(258, 100%, 50%);
+    font-family: sans-serif;
     font-weight: bold;
-    text-decoration: underline;
 }
 
-/* Анимация мерцания */
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+#run-away-x {
+    cursor: pointer;
+    position: relative;
+    transition: all 0.1s ease;
+    display: inline-block;
+    padding: 0 4px;
 }
-h1, h2, .row span {
-    animation: blink 2s infinite;
-}
+
+.ad-body { padding: 15px; text-align: center; font-size: 0.9em; }
+.ad-body img { width: 100px; margin-bottom: 10px; }
+.ad-close-btn { cursor: pointer; background: #c0c0c0; border: 2px outset #fff; padding: 5px 20px; font-weight: bold; }
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+h1, h2, .row span, .music-link { animation: blink 2s infinite; }
 </style>
 </head>
 
 <body>
 
-<div class="card">
-
-<h1>Welcome to <span class="nick">RosemaryDude</span> Website</h1>
-
-<p>
-Hi i'm RosemaryDude(aka TimurG) 16 Years Old
-And this is my personal website with my projects and links<br>
-
-I made this site to show some of my skills and my projects, Where am i work and more<br>
-
-So i am <br>
-➤Artist✎ <br>
-➤RPG game developer ✩ <br>
-➤Voice actor <br>
-➤Techno geek ▢ <br>
-
-
-</p>
-
-<h2>Links</h2>
-
-<div class="row"><span>Email</span><a href="https://mail.google.com/mail/u/1/#inbox?compose=GTvVlcRwPVrMxdHbTwrlnnwvqmvbLqXBklGHmzxkCcJrRNqkkrMMCLbMVrMSHcvbCzWPcMSFslNGg">rosemguy@icloud.com</a></div>
-<div class="row"><span>Telegram</span><a href="https://t.me/JustTimurG">@JustTimurG</a></div>
-<div class="row"><span>Links for Telegram Channels</span><a href="https://t.me/linksrosemguy">t.me/linksrosemguy</a></div>
-
-<h2>Projects Links</h2>
-
-<div class="row"><span>ROSEMARY FIELD</span><a href="https://t.me/rosemfield">t.me/rosemfield</a></span>[SORRY BUT I DONT MAKE A SITE FOR PROJECT]</div>
-<div class="row"><span>[ℕ𝕠𝕣𝕥𝕙 ℂ𝕠𝕝𝕝𝕖𝕔𝕥𝕚𝕧𝕖 𝕊𝕥𝕦𝕕𝕚𝕠]</span><a href="https://northcollectivestudio.github.io/">Сайт Студии</a></span>[Work]</div>
-<div class="row"><span></span><span>-END OF LINKS-</span></div>
-
-<h2>FunHub</h2>
-<div class="row"><a href="https://dick.eversiege.pics/uploads/cb6d82d744394e00.mp4">Fun1</a></span></div>
-<div class="row"><a href="https://dick.eversiege.pics/uploads/kfQTVttznULU7DEUPqzYAtaeWm8Am6Y.mp4">Fun2</a></span></div>
-<div class="row"><a href="https://dick.eversiege.pics/uploads/bd179465385e05ed449089ff71bd3698df29ac274a059a02e825a787af3c04e17541f637ebc502eed0e90fe213a82c3cfab745fb7dfa1a6401f050d593398e0e.mp4">Fun3</a></span></div>
-<div class="row"><a href="https://dick.eversiege.pics/uploads/intro.mp4.mov">Fun4</a></span></div>
-<div class="row"><a href="https://dick.eversiege.pics/uploads/DPFtSqtKDn_tashgatools.mp4">Fun5</a></span></div>
-<div class="row"><a href="https://dick.eversiege.pics/uploads/durov-3000.mp4">Fun6</a></span></div>
-
-
-
-
-<div style="text-align: center;">
-    <img src="https://dick.eversiege.pics/uploads/3dgifmaker16224.gif" alt="if RosemaryDude Cat not loaded, Its seems like you have old browser or low internet trafic" width="100" height="100" >
+<div id="ad-overlay">
+    <div class="ad-window" id="ad-box">
+        <div class="ad-header">
+            <span>Important Message</span>
+            <span id="run-away-x" onmouseover="runAway()" onclick="runAway()">[X]</span>
+        </div>
+        <div class="ad-body">
+            <img src="https://dick.eversiege.pics/uploads/3dgifmaker16224.gif" alt="Cat">
+            <p><b>Hey Hey Buddy!</b><br>Enable autoplay for best experience.<br>Click OK to pick up the cat girl!</p>
+            <button class="ad-close-btn" onclick="closeAd()">OK</button>
+        </div>
+    </div>
 </div>
 
-</p>RosemaryDude 2023-2026 RosemaryField 2025-2026</p>
+<div class="card">
+    <h1>Welcome to <span class="nick">RosemaryDude</span> Website</h1>
+
+    <a href="music.html" class="music-link"> [ MusicHUB (NEW!)] </a>
+
+    <p>
+    Hi i'm RosemaryDude(aka TimurG) 16 Years Old<br>
+    And this is my personal website with my projects and links<br><br>
+    ➤ Artist✎ <br>
+    ➤ RPG game developer ✩ <br>
+    ➤ Voice actor <br>
+    ➤ Techno geek ▢ <br>
+    </p>
+
+    <h2>Links</h2>
+    <div class="row"><span>Email</span><a href="mailto:rosemguy@icloud.com">rosemguy@icloud.com</a></div>
+    <div class="row"><span>Telegram</span><a href="https://t.me/JustTimurG">@JustTimurG</a></div>
+    <div class="row"><span>Links for Channels</span><a href="https://t.me/linksrosemguy">t.me/linksrosemguy</a></div>
+
+    <h2>Projects Links</h2>
+    <div class="row"><span>ROSEMARY FIELD</span><a href="https://t.me/rosemfield">t.me/rosemfield</a></div>
+    <div class="row"><span>North Collective</span><a href="https://northcollectivestudio.github.io/">North Collective Studio Website</a></div>
+
+    <h2>FunHub</h2>
+    <div class="row"><a href="https://dick.eversiege.pics/uploads/cb6d82d744394e00.mp4">Fun1</a></div>
+    <div class="row"><a href="https://dick.eversiege.pics/uploads/kfQTVttznULU7DEUPqzYAtaeWm8Am6Y.mp4">Fun2</a></div>
+    <div class="row"><a href="https://dick.eversiege.pics/uploads/bd179465385e05ed449089ff71bd3698df29ac274a059a02e825a787af3c04e17541f637ebc502eed0e90fe213a82c3cfab745fb7dfa1a6401f050d593398e0e.mp4">Fun3</a></div>
+    <div class="row"><a href="https://dick.eversiege.pics/uploads/intro.mp4.mov">Fun4</a></div>
+    <div class="row"><a href="https://dick.eversiege.pics/uploads/DPFtSqtKDn_tashgatools.mp4">Fun5</a></div>
+    <div class="row"><a href="https://dick.eversiege.pics/uploads/durov-3000.mp4">Fun6</a></div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <img src="https://dick.eversiege.pics/uploads/3dgifmaker16224.gif" width="100">
+        <p style="font-size: 0.8em;">RosemaryDude 2023-2026</p>
+    </div>
+</div>
+
+<audio id="sfx-run" src="https://dick.eversiege.pics/uploads/4040.ogg"></audio>
+
+<script>
+function closeAd() {
+    document.getElementById('ad-overlay').style.display = 'none';
+    document.getElementById('bg-music').play();
+}
+
+function runAway() {
+    const x = document.getElementById('run-away-x');
+    const sfx = document.getElementById('sfx-run');
+    sfx.currentTime = 0; sfx.play();
+    const randomX = Math.floor(Math.random() * 200) - 100;
+    const randomY = Math.floor(Math.random() * 200);
+    x.style.transform = `translate(${randomX}px, ${randomY}px)`;
+}
+
+
+
+
+
+
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+
+});
+
+
+document.onkeydown = function(e) {
+    if(
+        e.keyCode == 123 || // F12
+        (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || // I, J, C
+        (e.ctrlKey && e.keyCode == 85) // U (view source)
+    ) {
+        warnUser();
+        return false;
+    }
+};
+
+
+setInterval(function() {
+    const startTime = performance.now();
+    debugger; 
+    const endTime = performance.now();
+    if (endTime - startTime > 100) {
+        document.body.innerHTML = `
+            <div style="background:black; color:red; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
+                <h1>DEV TOOLS DETECTED!</h1>
+                <p style="font-size:2em;">WTF ARE YOU DOING HERE? Please just go back</p>
+                <img src="https://dick.eversiege.pics/uploads/wtfareyoudoinghere.png" width="200">
+                <button onclick="location.reload()" style="margin-top:20px; padding:10px 20px; cursor:pointer;">GO BACK</button>
+            </div>
+        `;
+    }
+}, 1000);
+</script>
 
 </body>
 </html>
