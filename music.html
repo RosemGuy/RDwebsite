@@ -24,7 +24,6 @@ body {
     box-shadow: 0 0 20px hsl(288, 100%, 50%);
 }
 
-
 .back-nav {
     margin-bottom: 20px;
 }
@@ -89,6 +88,7 @@ h2 { color: #00ffff; border-bottom: 2px dashed #3700ff; padding-bottom: 5px; mar
 .playlist {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .playlist li {
@@ -160,24 +160,19 @@ h2 { color: #00ffff; border-bottom: 2px dashed #3700ff; padding-bottom: 5px; mar
             <span>06. OMORI OST - 178 My Time</span>
             <span>03:30</span>
         </li>
-         <li onclick="playSong(6, 'Penis type in fucking piano', 'https://dick.eversiege.pics/uploads/penis.ogg')">
+        <li onclick="playSong(6, 'Penis type in fucking piano', 'https://dick.eversiege.pics/uploads/penis.ogg')">
             <span>07. Penis type in fucking piano</span>
             <span>04:04</span>
         </li>
-                <li onclick="playSong(7, 'Broken File Test', 'https://this-link-is-dead.mp3')">
+        <li onclick="playSong(7, 'Broken File Test', 'https://this-link-is-dead.mp3')">
             <span>08. [ERROR TEST]</span>
             <span>??:??</span>
         </li>               
-    </ul>
-
-                <li onclick="playSong(8, 'RadioHead - Treefingers', 'https://dick.eversiege.pics/uploads/Treefingers%20%20%20Radiohead.mp3')">
+        <li onclick="playSong(8, 'RadioHead - Treefingers', 'https://dick.eversiege.pics/uploads/Treefingers%20%20%20Radiohead.mp3')">
             <span>09. RadioHead - Treefingers</span>
             <span>03:43</span>
         </li>               
-    </ul>
-
-
-                <li onclick="playSong(9, 'Dekma-SHTRIKCOD - SlenderMAN', 'https://dick.eversiege.pics/uploads/dekma_SHTRIHCOD_-_SLENDERMEN_(SkySound.cc).mp3')">
+        <li onclick="playSong(9, 'Dekma-SHTRIKCOD - SlenderMAN', 'https://dick.eversiege.pics/uploads/dekma_SHTRIHCOD_-_SLENDERMEN_(SkySound.cc).mp3')">
             <span>10. Dekma-SHTRIKCOD - SlenderMAN</span>
             <span>01:00:00</span>
         </li>               
@@ -193,7 +188,6 @@ h2 { color: #00ffff; border-bottom: 2px dashed #3700ff; padding-bottom: 5px; mar
 const audio = document.getElementById('main-audio');
 const playBtn = document.getElementById('play-btn');
 const trackTitle = document.getElementById('current-track-title');
-const playlistItems = document.querySelectorAll('#playlist li');
 
 let currentTrackIndex = 0;
 let isHandlingError = false;
@@ -201,6 +195,7 @@ let isHandlingError = false;
 const fallbackAudioUrl = "https://dick.eversiege.pics/uploads/4040.ogg"; 
 
 function playSong(index, title, url) {
+    const playlistItems = document.querySelectorAll('#playlist li');
     isHandlingError = false;
     currentTrackIndex = index;
     audio.src = url;
@@ -235,6 +230,7 @@ function handleError() {
 audio.onerror = () => handleError();
 
 function togglePlay() {
+    const playlistItems = document.querySelectorAll('#playlist li');
     if (audio.paused) {
         if (!audio.src) playlistItems[0].click();
         else audio.play();
@@ -246,11 +242,13 @@ function togglePlay() {
 }
 
 function nextTrack() {
+    const playlistItems = document.querySelectorAll('#playlist li');
     let nextIndex = (currentTrackIndex + 1) % playlistItems.length;
     playlistItems[nextIndex].click();
 }
 
 function prevTrack() {
+    const playlistItems = document.querySelectorAll('#playlist li');
     let prevIndex = (currentTrackIndex - 1 + playlistItems.length) % playlistItems.length;
     playlistItems[prevIndex].click();
 }
@@ -259,23 +257,25 @@ audio.addEventListener('ended', () => {
     if (!isHandlingError) nextTrack();
 });
 
+
+function warnUser() {
+    alert("WTF ARE YOU DOING HERE? Please just go back!");
+}
+
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
-
 });
-
 
 document.onkeydown = function(e) {
     if(
-        e.keyCode == 123 || // F12
-        (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || // I, J, C
-        (e.ctrlKey && e.keyCode == 85) // U (view source)
+        e.keyCode == 123 || 
+        (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || 
+        (e.ctrlKey && e.keyCode == 85)
     ) {
         warnUser();
         return false;
     }
 };
-
 
 setInterval(function() {
     const startTime = performance.now();
@@ -283,17 +283,15 @@ setInterval(function() {
     const endTime = performance.now();
     if (endTime - startTime > 100) {
         document.body.innerHTML = `
-            <div style="background:black; color:red; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
+            <div style="background:black; color:red; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-family: 'Courier New', monospace;">
                 <h1>DEV TOOLS DETECTED!</h1>
                 <p style="font-size:2em;">WTF ARE YOU DOING HERE? Please just go back</p>
-                <img src="https://dick.eversiege.pics/uploads/wtfareyoudoinghere.png" width="200">
-                <button onclick="location.reload()" style="margin-top:20px; padding:10px 20px; cursor:pointer;">GO BACK</button>
+                <img src="https://dick.eversiege.pics/uploads/wtfareyoudoinghere.png" width="300">
+                <button onclick="location.reload()" style="margin-top:20px; padding:10px 20px; cursor:pointer; background: red; color: white; border: none; font-weight: bold;">GO BACK</button>
             </div>
         `;
     }
 }, 1000);
-
-
 </script>
 
 </body>
