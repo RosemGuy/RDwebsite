@@ -1,113 +1,118 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>RosemaryDude Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RosemaryDude Website</title>
 
-<audio id="bg-music" autoplay loop hidden>
-    <source src="https://dick.eversiege.pics/uploads/Ya%20Soshla%20S%20Uma%20(Very%20First%20Version).mp3" type="audio/mpeg">
-</audio>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Courier New", monospace;
+            color: hsl(294, 100%, 92%);
+            background: url("https://dick.eversiege.pics/uploads/e20bd476cfaddc0f4fa73eb844ad9660.jpg") no-repeat center center fixed;
+            background-size: cover;
+            text-shadow: 1px 1px 0 #000;
+            overflow-x: hidden;
+        }
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        .card {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(0,0,0,0.7);
+            border: 3px double #3700ff;
+            box-shadow: 0 0 15px hsl(288, 100%, 50%);
+        }
 
-<style>
-body {
-    margin: 0;
-    font-family: "Courier New", monospace;
-    color: hsl(294, 100%, 92%);
-    background: url("https://dick.eversiege.pics/uploads/e20bd476cfaddc0f4fa73eb844ad9660.jpg") no-repeat center center fixed;
-    background-size: cover;
-    text-shadow: 1px 1px 0 #000;
-}
+        .music-link {
+            display: block;
+            text-align: center;
+            margin: 15px 0;
+            padding: 12px;
+            border: 2px solid #ffff00;
+            background: rgba(255, 255, 0, 0.1);
+            color: #ffff00;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: 0.3s;
+        }
 
-.card {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: rgba(0,0,0,0.7);
-    border: 3px double #3700ff;
-    box-shadow: 0 0 15px hsl(288, 100%, 50%);
-}
+        .music-link:hover {
+            background: #ffff00;
+            color: #000;
+            box-shadow: 0 0 20px #ffff00;
+        }
 
-.music-link {
-    display: block;
-    text-align: center;
-    margin: 15px 0;
-    padding: 12px;
-    border: 2px solid #ffff00;
-    background: rgba(255, 255, 0, 0.1);
-    color: #ffff00;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1em;
-    transition: 0.3s;
-}
+        h1 { color: #ff00ff; font-size: 2em; text-align: center; }
+        h2 { color: #00ffff; font-size: 1.5em; border-bottom: 2px dashed #3700ff; padding-bottom: 5px; margin-top: 20px; }
 
-.music-link:hover {
-    background: #ffff00;
-    color: #000;
-    box-shadow: 0 0 20px #ffff00;
-}
+        a { color: #ffff00; text-decoration: underline; }
+        a:hover { color: #ff0000; }
 
-h1 { color: #ff00ff; font-size: 2em; text-align: center; }
-h2 { color: #00ffff; font-size: 1.5em; border-bottom: 2px dashed #3700ff; padding-bottom: 5px; margin-top: 20px; }
+        .row { display: flex; justify-content: space-between; margin: 8px 0; }
+        .nick { color: hsl(258, 100%, 50%); font-weight: bold; text-decoration: underline; }
 
-a { color: #ffff00; text-decoration: underline; }
-a:hover { color: #ff0000; }
+        #ad-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
 
-.row { display: flex; justify-content: space-between; margin: 8px 0; }
-.nick { color: hsl(258, 100%, 50%); font-weight: bold; text-decoration: underline; }
+        .ad-window {
+            width: 320px;
+            background: #c0c0c0;
+            border: 3px outset #fff;
+            color: #000;
+            text-shadow: none;
+            box-shadow: 10px 10px 0 rgba(0,0,0,0.5);
+            position: relative;
+            padding-bottom: 10px;
+        }
 
-/
-#ad-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.85);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
+        .ad-header {
+            background: linear-gradient(90deg, #000080, #0080ff);
+            color: white;
+            padding: 4px 6px;
+            display: flex;
+            justify-content: space-between;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
 
-.ad-window {
-    width: 320px;
-    background: #c0c0c0;
-    border: 3px outset #fff;
-    color: #000;
-    text-shadow: none;
-    box-shadow: 10px 10px 0 rgba(0,0,0,0.5);
-    position: relative;
-    padding-bottom: 10px;
-}
+        #run-away-x {
+            cursor: pointer;
+            position: absolute;
+            right: 5px;
+            top: 4px;
+            transition: all 0.1s ease;
+            display: inline-block;
+            padding: 0 4px;
+            background: #c0c0c0;
+            color: black;
+            border: 1px outset #fff;
+        }
 
-.ad-header {
-    background: linear-gradient(90deg, #000080, #0080ff);
-    color: white;
-    padding: 4px 6px;
-    display: flex;
-    justify-content: space-between;
-    font-family: sans-serif;
-    font-weight: bold;
-}
+        .ad-body { padding: 15px; text-align: center; font-size: 0.9em; }
+        .ad-body img { width: 100px; margin-bottom: 10px; }
+        .ad-close-btn { cursor: pointer; background: #c0c0c0; border: 2px outset #fff; padding: 5px 20px; font-weight: bold; }
 
-#run-away-x {
-    cursor: pointer;
-    position: relative;
-    transition: all 0.1s ease;
-    display: inline-block;
-    padding: 0 4px;
-}
-
-.ad-body { padding: 15px; text-align: center; font-size: 0.9em; }
-.ad-body img { width: 100px; margin-bottom: 10px; }
-.ad-close-btn { cursor: pointer; background: #c0c0c0; border: 2px outset #fff; padding: 5px 20px; font-weight: bold; }
-
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-h1, h2, .row span, .music-link { animation: blink 2s infinite; }
-</style>
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        h1, h2, .row span, .music-link { animation: blink 2s infinite; }
+    </style>
 </head>
 
 <body>
+
+<audio id="bg-music" loop>
+    <source src="https://dick.eversiege.pics/uploads/Ya%20Soshla%20S%20Uma%20(Very%20First%20Version).mp3" type="audio/mpeg">
+</audio>
 
 <div id="ad-overlay">
     <div class="ad-window" id="ad-box">
@@ -117,7 +122,9 @@ h1, h2, .row span, .music-link { animation: blink 2s infinite; }
         </div>
         <div class="ad-body">
             <img src="https://dick.eversiege.pics/uploads/3dgifmaker16224.gif" alt="Cat">
-            <p><b>Hey Hey Buddy!</b><br>Sorry but in site music its not work </br><br>so i just try to fix and make it work again so no music in site</br>.<br>Click OK to pick up the cat girl!</p>
+            <p><b>Hey Hey Buddy!</b><br>
+            Music is not fixed but i try my best to fix<br>
+            Click OK to pick up the cat girl.</p>
             <button class="ad-close-btn" onclick="closeAd()">OK</button>
         </div>
     </div>
@@ -155,7 +162,7 @@ h1, h2, .row span, .music-link { animation: blink 2s infinite; }
     <div class="row"><a href="https://dick.eversiege.pics/uploads/durov-3000.mp4">Fun6</a></div>
 
     <div style="text-align: center; margin-top: 20px;">
-        <img src="https://dick.eversiege.pics/uploads/3dgifmaker16224.gif" width="100">
+        <img src="https://dick.eversiege.pics/uploads/3dgifmaker16224.gif" width="100" alt="footer-cat">
         <p style="font-size: 0.8em;">RosemaryDude 2023-2026</p>
     </div>
 </div>
@@ -165,57 +172,56 @@ h1, h2, .row span, .music-link { animation: blink 2s infinite; }
 <script>
 function closeAd() {
     document.getElementById('ad-overlay').style.display = 'none';
-    document.getElementById('bg-music').play();
+    const music = document.getElementById('bg-music');
+    music.play().catch(e => console.log("Audio play prevented by browser"));
 }
 
 function runAway() {
     const x = document.getElementById('run-away-x');
     const sfx = document.getElementById('sfx-run');
-    sfx.currentTime = 0; sfx.play();
-    const randomX = Math.floor(Math.random() * 200) - 100;
-    const randomY = Math.floor(Math.random() * 200);
+    sfx.currentTime = 0; 
+    sfx.play();
+    
+
+    const randomX = Math.floor(Math.random() * 250) - 125;
+    const randomY = Math.floor(Math.random() * 150) - 75;
     x.style.transform = `translate(${randomX}px, ${randomY}px)`;
 }
 
-
-
-
-
-
-document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-
-});
-
+document.addEventListener('contextmenu', e => e.preventDefault());
 
 document.onkeydown = function(e) {
     if(
-        e.keyCode == 123 || // F12
-        (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || // I, J, C
-        (e.ctrlKey && e.keyCode == 85) // U (view source)
+        e.keyCode == 123 || 
+        (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || 
+        (e.ctrlKey && e.keyCode == 85)
     ) {
-        warnUser();
         return false;
     }
 };
 
 
-setInterval(function() {
-    const startTime = performance.now();
-    debugger; 
-    const endTime = performance.now();
-    if (endTime - startTime > 100) {
-        document.body.innerHTML = `
-            <div style="background:black; color:red; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
-                <h1>DEV TOOLS DETECTED!</h1>
-                <p style="font-size:2em;">WTF ARE YOU DOING HERE? Please just go back</p>
-                <img src="https://dick.eversiege.pics/uploads/wtfareyoudoinghere.png" width="200">
-                <button onclick="location.reload()" style="margin-top:20px; padding:10px 20px; cursor:pointer;">GO BACK</button>
-            </div>
-        `;
+let devtoolsOpen = false;
+const threshold = 160;
+setInterval(() => {
+    const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+    const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+    if (widthThreshold || heightThreshold) {
+        if (!devtoolsOpen) {
+            document.body.innerHTML = `
+                <div style="background:black; color:red; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-family:sans-serif;">
+                    <h1>DEV TOOLS DETECTED!</h1>
+                    <p style="font-size:1.5em;">WTF ARE YOU DOING HERE? Please just go back.</p>
+                    <button onclick="location.reload()" style="margin-top:20px; padding:10px 20px; cursor:pointer;">GO BACK</button>
+                </div>
+            `;
+            devtoolsOpen = true;
+        }
     }
 }, 1000);
 </script>
 
 </body>
 </html>
+
+```
