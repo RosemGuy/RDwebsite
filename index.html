@@ -1,118 +1,113 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RosemaryDude Website</title>
+<meta charset="UTF-8">
+<title>RosemaryDude Website</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: "Courier New", monospace;
-            color: hsl(294, 100%, 92%);
-            background: url("https://dick.eversiege.pics/music/e20bd476cfaddc0f4fa73eb844ad9660.jpg") no-repeat center center fixed;
-            background-size: cover;
-            text-shadow: 1px 1px 0 #000;
-            overflow-x: hidden;
-        }
+<audio id="bg-music" autoplay loop hidden>
+    <source src="https://dick.eversiege.pics/shareables/non4ebk9bwyo/Ya%20Soshla%20S%20Uma%20%28Very%20First%20Version%29.mp3" type="audio/mpeg">
+</audio>
 
-        .card {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: rgba(0,0,0,0.7);
-            border: 3px double #3700ff;
-            box-shadow: 0 0 15px hsl(288, 100%, 50%);
-        }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .music-link {
-            display: block;
-            text-align: center;
-            margin: 15px 0;
-            padding: 12px;
-            border: 2px solid #ffff00;
-            background: rgba(255, 255, 0, 0.1);
-            color: #ffff00;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: 0.3s;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: "Courier New", monospace;
+    color: hsl(294, 100%, 92%);
+    background: url("https://dick.eversiege.pics/shareables/pqdpzztdxu3w/background.jpg") no-repeat center center fixed;
+    background-size: cover;
+    text-shadow: 1px 1px 0 #000;
+}
 
-        .music-link:hover {
-            background: #ffff00;
-            color: #000;
-            box-shadow: 0 0 20px #ffff00;
-        }
+.card {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(0,0,0,0.7);
+    border: 3px double #3700ff;
+    box-shadow: 0 0 15px hsl(288, 100%, 50%);
+}
 
-        h1 { color: #ff00ff; font-size: 2em; text-align: center; }
-        h2 { color: #00ffff; font-size: 1.5em; border-bottom: 2px dashed #3700ff; padding-bottom: 5px; margin-top: 20px; }
+.music-link {
+    display: block;
+    text-align: center;
+    margin: 15px 0;
+    padding: 12px;
+    border: 2px solid #ffff00;
+    background: rgba(255, 255, 0, 0.1);
+    color: #ffff00;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: 0.3s;
+}
 
-        a { color: #ffff00; text-decoration: underline; }
-        a:hover { color: #ff0000; }
+.music-link:hover {
+    background: #ffff00;
+    color: #000;
+    box-shadow: 0 0 20px #ffff00;
+}
 
-        .row { display: flex; justify-content: space-between; margin: 8px 0; }
-        .nick { color: hsl(258, 100%, 50%); font-weight: bold; text-decoration: underline; }
+h1 { color: #ff00ff; font-size: 2em; text-align: center; }
+h2 { color: #00ffff; font-size: 1.5em; border-bottom: 2px dashed #3700ff; padding-bottom: 5px; margin-top: 20px; }
 
-        #ad-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
+a { color: #ffff00; text-decoration: underline; }
+a:hover { color: #ff0000; }
 
-        .ad-window {
-            width: 320px;
-            background: #c0c0c0;
-            border: 3px outset #fff;
-            color: #000;
-            text-shadow: none;
-            box-shadow: 10px 10px 0 rgba(0,0,0,0.5);
-            position: relative;
-            padding-bottom: 10px;
-        }
+.row { display: flex; justify-content: space-between; margin: 8px 0; }
+.nick { color: hsl(258, 100%, 50%); font-weight: bold; text-decoration: underline; }
 
-        .ad-header {
-            background: linear-gradient(90deg, #000080, #0080ff);
-            color: white;
-            padding: 4px 6px;
-            display: flex;
-            justify-content: space-between;
-            font-family: sans-serif;
-            font-weight: bold;
-        }
+/* Рекламное окно */
+#ad-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
 
-        #run-away-x {
-            cursor: pointer;
-            position: absolute;
-            right: 5px;
-            top: 4px;
-            transition: all 0.1s ease;
-            display: inline-block;
-            padding: 0 4px;
-            background: #c0c0c0;
-            color: black;
-            border: 1px outset #fff;
-        }
+.ad-window {
+    width: 320px;
+    background: #c0c0c0;
+    border: 3px outset #fff;
+    color: #000;
+    text-shadow: none;
+    box-shadow: 10px 10px 0 rgba(0,0,0,0.5);
+    position: relative;
+    padding-bottom: 10px;
+}
 
-        .ad-body { padding: 15px; text-align: center; font-size: 0.9em; }
-        .ad-body img { width: 100px; margin-bottom: 10px; }
-        .ad-close-btn { cursor: pointer; background: #c0c0c0; border: 2px outset #fff; padding: 5px 20px; font-weight: bold; }
+.ad-header {
+    background: linear-gradient(90deg, #000080, #0080ff);
+    color: white;
+    padding: 4px 6px;
+    display: flex;
+    justify-content: space-between;
+    font-family: sans-serif;
+    font-weight: bold;
+}
 
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-        h1, h2, .row span, .music-link { animation: blink 2s infinite; }
-    </style>
+#run-away-x {
+    cursor: pointer;
+    position: relative;
+    transition: all 0.1s ease;
+    display: inline-block;
+    padding: 0 4px;
+}
+
+.ad-body { padding: 15px; text-align: center; font-size: 0.9em; }
+.ad-body img { width: 100px; margin-bottom: 10px; }
+.ad-close-btn { cursor: pointer; background: #c0c0c0; border: 2px outset #fff; padding: 5px 20px; font-weight: bold; }
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+h1, h2, .row span, .music-link { animation: blink 2s infinite; }
+</style>
 </head>
 
 <body>
-
-<audio id="bg-music" loop>
-    <source src="https://dick.eversiege.pics/uploads/Ya%20Soshla%20S%20Uma%20(Very%20First%20Version).mp3" type="audio/mpeg">
-</audio>
 
 <div id="ad-overlay">
     <div class="ad-window" id="ad-box">
@@ -121,11 +116,9 @@
             <span id="run-away-x" onmouseover="runAway()" onclick="runAway()">[X]</span>
         </div>
         <div class="ad-body">
-            <img src="https://dick.eversiege.pics/uploads/3dgifmaker16224.gif" alt="Cat">
-            <p><b>Hey Hey Buddy!</b><br>
-            Website is now on fixing<br>
-            so you cant close this window.</p>
-            
+            <img src="https://dick.eversiege.pics/shareables/bpx8skp16crn/0.png" alt="Cat">
+            <p><b>Hey Hey Buddy!</b><br>Website FIXED! and Big Thanks to EVERSIEGE for filestorage, And some music temporarily not working because i move to filestorage so well goodluck.<br>Click OK to pick up the cat girl!</p>
+            <button class="ad-close-btn" onclick="closeAd()">OK</button>
         </div>
     </div>
 </div>
@@ -133,7 +126,7 @@
 <div class="card">
     <h1>Welcome to <span class="nick">RosemaryDude</span> Website</h1>
 
-    <a href="music.html" class="music-link"> [ MusicHUB ] </a>
+    <a href="music.html" class="music-link"> [ MusicHUB (Some Music its available)] </a>
 
     <p>
     Hi i'm RosemaryDude(aka TimurG) 16 Years Old<br>
@@ -162,8 +155,8 @@
     <div class="row"><a href="https://dick.eversiege.pics/uploads/durov-3000.mp4">Fun6</a></div>
 
     <div style="text-align: center; margin-top: 20px;">
-        <img src="https://dick.eversiege.pics/uploads/3dgifmaker16224.gif" width="100" alt="footer-cat">
-        <p style="font-size: 0.8em;">RosemaryDude 2023-2026</p>
+        <img src="https://dick.eversiege.pics/uploads/3dgifmaker16224.gif" width="100">
+        <p style="font-size: 0.8em;">RosemaryDude 2023-2026 Powered by EVERSIEGE WebStorage</p>
     </div>
 </div>
 
@@ -172,56 +165,57 @@
 <script>
 function closeAd() {
     document.getElementById('ad-overlay').style.display = 'none';
-    const music = document.getElementById('bg-music');
-    music.play().catch(e => console.log("Audio play prevented by browser"));
+    document.getElementById('bg-music').play();
 }
 
 function runAway() {
     const x = document.getElementById('run-away-x');
     const sfx = document.getElementById('sfx-run');
-    sfx.currentTime = 0; 
-    sfx.play();
-    
-
-    const randomX = Math.floor(Math.random() * 250) - 125;
-    const randomY = Math.floor(Math.random() * 150) - 75;
+    sfx.currentTime = 0; sfx.play();
+    const randomX = Math.floor(Math.random() * 200) - 100;
+    const randomY = Math.floor(Math.random() * 200);
     x.style.transform = `translate(${randomX}px, ${randomY}px)`;
 }
 
-document.addEventListener('contextmenu', e => e.preventDefault());
+
+
+
+
+
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+
+});
+
 
 document.onkeydown = function(e) {
     if(
-        e.keyCode == 123 || 
-        (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || 
-        (e.ctrlKey && e.keyCode == 85)
+        e.keyCode == 123 || // F12
+        (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || // I, J, C
+        (e.ctrlKey && e.keyCode == 85) // U (view source)
     ) {
+        warnUser();
         return false;
     }
 };
 
 
-let devtoolsOpen = false;
-const threshold = 160;
-setInterval(() => {
-    const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-    const heightThreshold = window.outerHeight - window.innerHeight > threshold;
-    if (widthThreshold || heightThreshold) {
-        if (!devtoolsOpen) {
-            document.body.innerHTML = `
-                <div style="background:black; color:red; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-family:sans-serif;">
-                    <h1>DEV TOOLS DETECTED!</h1>
-                    <p style="font-size:1.5em;">WTF ARE YOU DOING HERE? Please just go back.</p>
-                    <button onclick="location.reload()" style="margin-top:20px; padding:10px 20px; cursor:pointer;">GO BACK</button>
-                </div>
-            `;
-            devtoolsOpen = true;
-        }
+setInterval(function() {
+    const startTime = performance.now();
+    debugger; 
+    const endTime = performance.now();
+    if (endTime - startTime > 100) {
+        document.body.innerHTML = `
+            <div style="background:black; color:red; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
+                <h1>DEV TOOLS DETECTED!</h1>
+                <p style="font-size:2em;">WTF ARE YOU DOING HERE? Please just go back</p>
+                <img src="https://dick.eversiege.pics/uploads/wtfareyoudoinghere.png" width="200">
+                <button onclick="location.reload()" style="margin-top:20px; padding:10px 20px; cursor:pointer;">GO BACK</button>
+            </div>
+        `;
     }
 }, 1000);
 </script>
 
 </body>
 </html>
-
-```
